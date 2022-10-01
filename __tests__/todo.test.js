@@ -24,6 +24,7 @@ describe("todo list endpoints", () => {
     const page = 1;
     const page_count = 5;
     it("should respond corectly", async () => {
+      const count = await Todo.count();
       const { body, statusCode } = await request(app)
         .get(`/api/todo?page=${1}&page_count=${page_count}`)
         .expect(200);
@@ -31,6 +32,7 @@ describe("todo list endpoints", () => {
       expect(statusCode).toEqual(200);
       expect(body.result.page).toEqual(page);
       expect(body.result.page_length).toBeLessThanOrEqual(page_count);
+      expect(body.result.total_pages).toEqual(Math.ceil(count / page_count));
     });
   });
 
