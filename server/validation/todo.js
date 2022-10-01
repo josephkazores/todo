@@ -4,15 +4,21 @@ exports.getList = [
   check("page")
     .isNumeric()
     .withMessage("must be an Integer")
-    .not()
-    .isIn([0])
-    .withMessage("must be a whole number"),
+    .custom((value) => {
+      if (value <= 0) {
+        throw new Error("must be a whole number");
+      }
+      return value;
+    }),
   check("page_count")
     .isNumeric()
     .withMessage("must be an Integer")
-    .not()
-    .isIn([0])
-    .withMessage("must be a whole number"),
+    .custom((value) => {
+      if (value <= 0) {
+        throw new Error("must be a whole number");
+      }
+      return value;
+    }),
 ];
 
 exports.addTodo = [

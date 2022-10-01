@@ -32,6 +32,7 @@ exports.getList = async (req, res) => {
         data: result,
         page: parseInt(page),
         page_length: result.length,
+        total_pages: Math.ceil(count / page_count),
         total_data: count,
       },
     });
