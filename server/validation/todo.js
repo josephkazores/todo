@@ -7,7 +7,12 @@ exports.getList = [
     .not()
     .isIn([0])
     .withMessage("must be a whole number"),
-  check("page_count").isNumeric().withMessage("must be an Integer"),
+  check("page_count")
+    .isNumeric()
+    .withMessage("must be an Integer")
+    .not()
+    .isIn([0])
+    .withMessage("must be a whole number"),
 ];
 
 exports.addTodo = [
