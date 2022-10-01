@@ -33,6 +33,7 @@ describe("todo list endpoints", () => {
       expect(body.result.page).toEqual(page);
       expect(body.result.page_length).toBeLessThanOrEqual(page_count);
       expect(body.result.total_pages).toEqual(Math.ceil(count / page_count));
+      expect(body.result.total_data).toEqual(count);
     });
   });
 
